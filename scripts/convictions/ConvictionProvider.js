@@ -10,3 +10,9 @@ export const getConvictions = () => {
             }
         )
 }
+
+export const getOneConviction = (id) => {
+    return fetch(`https://criminals.glassdale.us/crimes/${id}`)
+        .then(response => response.json())
+}
+
