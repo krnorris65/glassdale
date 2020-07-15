@@ -1,6 +1,5 @@
-import {Criminal} from "./Criminal.js";
-import {useCriminals} from "./CriminalProvider.js"
-import {getOneConviction} from "../convictions/ConvictionProvider.js"
+import { Criminal } from "./Criminal.js";
+import { useCriminals } from "./CriminalProvider.js"
 
 const eventHub = document.querySelector(".container")
 
@@ -30,19 +29,15 @@ eventHub.addEventListener('chosenCrime', event => {
         /*
             Filter the criminals application state down to the people that committed the crime
         */
+        const matchingCriminals = appStateCriminals.filter(criminal => criminal.conviction === event.detail.crime)
 
-        getOneConviction(event.detail.crimeId).then ( conviction => {
-            console.log(conviction)
-            const matchingCriminals = appStateCriminals.filter(criminal => criminal.conviction === conviction.name)
-            console.log(matchingCriminals)
-    
-            /*
-                Then invoke render() and pass the filtered collection as
-                an argument
-            */
-           render(matchingCriminals)
-        })
-    }else {
+        /*
+            Then invoke render() and pass the filtered collection as
+            an argument
+        */
+        render(matchingCriminals)
+    } else {
+        // if a crime isn't selected then return all the criminals
         render(appStateCriminals)
     }
 })
