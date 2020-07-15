@@ -2,6 +2,8 @@ import { getCriminals } from './criminals/CriminalProvider.js';
 import { CriminalList } from "./criminals/CriminalList.js";
 import {getConvictions} from "./convictions/ConvictionProvider.js"
 import {ConvictionSelect} from "./convictions/ConvictionSelect.js"
+import{getOfficers} from "./officers/OfficerProvider.js"
+import {OfficerSelect} from "./officers/OfficerSelect.js"
 
 getCriminals().then(() => {
 
@@ -13,3 +15,4 @@ getCriminals().then(() => {
 })
 
 getConvictions().then(ConvictionSelect)
+getOfficers().then(OfficerSelect)
