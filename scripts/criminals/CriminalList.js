@@ -26,6 +26,19 @@ eventHub.addEventListener('chosenCrime', event => {
     }
 })
 
+eventHub.addEventListener('chosenOfficer', event => {
+    const appStateCriminals = useCriminals()
+
+    if("officer" in event.detail && event.detail.officer !== undefined){
+
+        const matchingCriminals = appStateCriminals.filter(criminal => criminal.arrestingOfficer === event.detail.officer.name)
+        render(matchingCriminals)
+    } else {
+        // if an officer isn't selected then return all the criminals
+        render(appStateCriminals)
+    }
+})
+
 const render = criminalCollection => {
     let criminalHtmlRepresentation = ""
     criminalCollection.forEach(criminal => {
