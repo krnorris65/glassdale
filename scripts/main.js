@@ -4,6 +4,7 @@ import {getConvictions} from "./convictions/ConvictionProvider.js"
 import {ConvictionSelect} from "./convictions/ConvictionSelect.js"
 import{getOfficers} from "./officers/OfficerProvider.js"
 import {OfficerSelect} from "./officers/OfficerSelect.js"
+import { NoteForm } from "./notes/NoteForm.js";
 
 getCriminals().then(() => {
 
@@ -12,6 +13,8 @@ getCriminals().then(() => {
         component should be rendered?
     */
     CriminalList()
+    NoteForm()
+
 })
 
 getConvictions().then(ConvictionSelect)
