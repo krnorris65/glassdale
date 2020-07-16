@@ -5,6 +5,7 @@ import {ConvictionSelect} from "./convictions/ConvictionSelect.js"
 import{getOfficers} from "./officers/OfficerProvider.js"
 import {OfficerSelect} from "./officers/OfficerSelect.js"
 import { NoteForm } from "./notes/NoteForm.js";
+import "./criminals/KnownAssociates.js"
 
 getCriminals().then(() => {
 
