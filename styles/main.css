@@ -1,0 +1,6 @@
+@import 'criminal.css';
+
+.filters {
+    display: flex;
+    margin: 1em;
+}
