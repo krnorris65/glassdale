@@ -5,6 +5,20 @@ const eventHub = document.querySelector(".container")
 
 const criminalContainer = document.querySelector('.criminalsContainer')
 
+// have this event listener here instead of in Criminal.js so that there aren't 200+ event listeners being added
+criminalContainer.addEventListener("click", event => {
+    if(event.target.id.startsWith("associates--")){
+        const [label, criminalId] = event.target.id.split("--")
+        const showAssociates = new CustomEvent("showKnownAssociates", {
+            detail: {
+                chosenCriminal: criminalId
+            }
+        })
+
+        eventHub.dispatchEvent(showAssociates)
+    }
+})
+
 eventHub.addEventListener('chosenCrime', event => {
     const appStateCriminals = useCriminals()
 

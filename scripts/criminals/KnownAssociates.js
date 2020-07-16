@@ -14,14 +14,17 @@ eventHub.addEventListener("showKnownAssociates", event => {
         const alibiDialog = document.querySelector("#alibis")
         alibiDialog.showModal()
 
-        const alibiClose = document.querySelector("#close-dialog")
-        alibiClose.addEventListener("click", event => {
-            alibiDialog.close()
-        })
+
 
     }
 })
 
+contentTarget.addEventListener("click", event => {
+    if(event.target.id === "close-dialog"){
+        const dialogBox = event.target.parentNode
+        dialogBox.close()
+    } 
+})
 
 export const KnownAssociateDiv = (associates) => {
     let associateHTML = ""

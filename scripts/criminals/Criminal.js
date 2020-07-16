@@ -13,19 +13,3 @@ export const Criminal = (criminalObject) => {
     `
 }
 
-const eventHub = document.querySelector(".container")
-const criminalContainer = document.querySelector('.criminalsContainer')
-
-criminalContainer.addEventListener("click", event => {
-    if(event.target.id.startsWith("associates--")){
-        const [label, criminalId] = event.target.id.split("--")
-        const showAssociates = new CustomEvent("showKnownAssociates", {
-            detail: {
-                chosenCriminal: criminalId
-            }
-        })
-
-        eventHub.dispatchEvent(showAssociates)
-    }
-})
-
