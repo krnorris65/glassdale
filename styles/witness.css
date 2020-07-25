@@ -1,0 +1,6 @@
+.witness {
+    border: 1px green solid;
+    flex-basis: 30%;
+    margin: 5px;
+    padding: 5px;
+}

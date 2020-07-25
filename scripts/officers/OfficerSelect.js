@@ -8,7 +8,7 @@ const render = officersCollection => {
         <select class="dropdown" id="officerSelect">
             <option value="0">Please select an officer...</option>
             ${
-                officersCollection.map(officer => `<option value="${officer.id}">${officer.name}</option>`)
+                officersCollection.map(officer => `<option value="${officer.id}">${officer.name}</option>`).join("")
             }
         </select>
     `
