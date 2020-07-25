@@ -6,6 +6,8 @@ import{getOfficers} from "./officers/OfficerProvider.js"
 import {OfficerSelect} from "./officers/OfficerSelect.js"
 import { NoteForm } from "./notes/NoteForm.js";
 import "./criminals/KnownAssociates.js"
+import { WitnessStatementButton } from "./witnesses/WitnessStatementButton.js";
+import "./witnesses/WitnessList.js"
 
 getCriminals().then(() => {
 
@@ -20,3 +22,4 @@ getCriminals().then(() => {
 
 getConvictions().then(ConvictionSelect)
 getOfficers().then(OfficerSelect)
+WitnessStatementButton()

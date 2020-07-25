@@ -20,10 +20,10 @@ eventHub.addEventListener("showKnownAssociates", event => {
 })
 
 contentTarget.addEventListener("click", event => {
-    if(event.target.id === "close-dialog"){
+    if (event.target.id === "close-dialog") {
         const dialogBox = event.target.parentNode
         dialogBox.close()
-    } 
+    }
 })
 
 export const KnownAssociateDiv = (associates) => {
