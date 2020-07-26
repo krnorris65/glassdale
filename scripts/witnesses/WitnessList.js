@@ -1,8 +1,9 @@
 import { Witness } from "./Witness.js";
 import { useWitnesses, getWitnesses } from "./WitnessProvider.js";
+import { hideOtherListContainers } from "../helpers/hideElement.js";
 
 const eventHub = document.querySelector(".container")
-const witnessContainer = document.querySelector('.criminalsContainer')
+const witnessContainer = document.querySelector('.statementsContainer')
 
 const render = witnessCollection => {
     let witnessHtmlRepresentation = ""
@@ -18,6 +19,7 @@ eventHub.addEventListener("witnessButtonClicked", event => {
 
 
 export const WitnessList = () => {
+    hideOtherListContainers(witnessContainer)
     getWitnesses().then(() => {
         const appStateWitnesses = useWitnesses()
         render(appStateWitnesses)
