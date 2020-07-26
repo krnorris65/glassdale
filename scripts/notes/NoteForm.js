@@ -1,29 +1,32 @@
-import { useCriminals } from "../criminals/CriminalProvider.js";
+import { useCriminals, getCriminals } from "../criminals/CriminalProvider.js";
 import { saveNote } from "./NoteProvider.js";
 const contentTarget = document.querySelector(".noteFormContainer")
 const eventHub = document.querySelector(".container")
 
 const render = () => {
-    const criminalsCollection = useCriminals()
-    const alphabetizedCriminals = criminalsCollection.sort((a,b) => a.name > b.name ? 1 : -1)
+    getCriminals().then(() => {
 
-    contentTarget.innerHTML = `
-    <fieldset>
+        const criminalsCollection = useCriminals()
+        const alphabetizedCriminals = criminalsCollection.sort((a,b) => a.name > b.name ? 1 : -1)
+        
+        contentTarget.innerHTML = `
+        <fieldset>
         <label class="label" for="note-text">Note:</>
         <input type="text" id="note-text">
-    </fieldset>
-    <fieldset>
+        </fieldset>
+        <fieldset>
         <label class="label" for="note-criminal">Criminal:</>
         <select id="note-criminal">
-            <option value="0">***Select Criminal***</option>
-            ${alphabetizedCriminals.map(criminal => {
-                return `<option value="${criminal.id}">${criminal.name}</option>`
-            })}
+        <option value="0">***Select Criminal***</option>
+        ${alphabetizedCriminals.map(criminal => {
+            return `<option value="${criminal.id}">${criminal.name}</option>`
+        })}
         </select>
-    </fieldset>
-    
-    <button id="saveNote">Save Note</button>
-    `
+        </fieldset>
+        
+        <button id="saveNote">Save Note</button>
+        `
+    })
 }
 
 eventHub.addEventListener("click", clickEvent => {

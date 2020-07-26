@@ -2,7 +2,7 @@
  *   ConvictionSelect component that renders a select HTML element
  *   which lists all convictions in the Glassdale PD API
  */
-import { useConvictions } from "./ConvictionProvider.js"
+import { useConvictions, getConvictions } from "./ConvictionProvider.js"
 import { resetOtherDropdowns } from "../helpers/resetElement.js";
 
 const eventHub = document.querySelector(".container")
@@ -48,6 +48,8 @@ const render = convictionsCollection => {
 
 export const ConvictionSelect = () => {
     // Get all convictions from application state
-    const convictions = useConvictions()
-    render(convictions)
+    getConvictions().then(() => {
+        const convictions = useConvictions()
+        render(convictions)
+    })
 }

@@ -1,4 +1,4 @@
-import {useOfficers} from "./OfficerProvider.js"
+import {useOfficers, getOfficers} from "./OfficerProvider.js"
 import { resetOtherDropdowns } from "../helpers/resetElement.js";
 
 const contentTarget = document.querySelector(".filters__officer")
@@ -17,8 +17,10 @@ const render = officersCollection => {
 
 export const OfficerSelect = () => {
     // Get all officers from application state
-    const officers = useOfficers()
-    render(officers)
+    getOfficers().then(() => {
+        const officers = useOfficers()
+        render(officers)
+    })
 }
 
 eventHub.addEventListener("change", event => {

@@ -1,5 +1,5 @@
 import { Criminal } from "./Criminal.js";
-import { useCriminals } from "./CriminalProvider.js"
+import { useCriminals, getCriminals } from "./CriminalProvider.js"
 
 const eventHub = document.querySelector(".container")
 const criminalContainer = document.querySelector('.criminalsContainer')
@@ -64,8 +64,10 @@ const render = criminalCollection => {
 
 // Render ALL criminals initally
 export const CriminalList = () => {
-    const appStateCriminals = useCriminals()
-    render(appStateCriminals)
+    getCriminals().then(() => {
+        const appStateCriminals = useCriminals()
+        render(appStateCriminals)
+    })
 }
 
 
