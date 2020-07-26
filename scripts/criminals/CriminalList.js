@@ -2,7 +2,6 @@ import { Criminal } from "./Criminal.js";
 import { useCriminals } from "./CriminalProvider.js"
 
 const eventHub = document.querySelector(".container")
-
 const criminalContainer = document.querySelector('.criminalsContainer')
 
 // have this event listener here instead of in Criminal.js so that there aren't 200+ event listeners being added
@@ -60,6 +59,7 @@ const render = criminalCollection => {
     })
     criminalContainer.innerHTML = criminalHtmlRepresentation
 }
+
 
 
 // Render ALL criminals initally
