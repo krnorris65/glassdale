@@ -1,5 +1,6 @@
 import { Criminal } from "./Criminal.js";
 import { useCriminals, getCriminals } from "./CriminalProvider.js"
+import { hideOtherListContainers } from "../helpers/hideElement.js";
 
 const eventHub = document.querySelector(".container")
 const criminalContainer = document.querySelector('.criminalsContainer')
@@ -53,6 +54,7 @@ eventHub.addEventListener('chosenOfficer', event => {
 })
 
 const render = criminalCollection => {
+    hideOtherListContainers(criminalContainer)
     let criminalHtmlRepresentation = ""
     criminalCollection.forEach(criminal => {
         criminalHtmlRepresentation += Criminal(criminal)
