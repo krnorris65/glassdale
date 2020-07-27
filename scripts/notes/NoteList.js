@@ -1,5 +1,5 @@
-import { useNotes, getNotes} from './NoteProvider.js'
-import { useCriminals, getCriminals} from '../criminals/CriminalProvider.js'
+import { useNotes, getNotes, deleteNote } from './NoteProvider.js'
+import { useCriminals, getCriminals } from '../criminals/CriminalProvider.js'
 import { hideOtherListContainers } from "../helpers/hideElement.js";
 
 const eventHub = document.querySelector(".container")
@@ -15,12 +15,13 @@ const render = (noteCollection, criminalCollection) => {
             <section class="note">
                 <h2>Note about ${relatedCriminal.name}</h2>
                 ${note.text}
+                <button id="deleteNote--${note.id}">Delete</button>
             </section>
         `
     }).join("")
 }
 
-const NoteList = () => {
+export const NoteList = () => {
     hideOtherListContainers(contentTarget)
     getNotes()
         .then(getCriminals)
@@ -34,4 +35,27 @@ const NoteList = () => {
 
 eventHub.addEventListener("noteButtonClicked", event => {
     NoteList()
+})
+eventHub.addEventListener("noteStateChanged", event => {
+    NoteList()
+})
+
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("deleteNote--")) {
+        const [prefix, id] = clickEvent.target.id.split("--")
+
+        /*
+            Invoke the function that performs the delete operation.
+
+            Once the operation is complete you should THEN invoke
+            useNotes() and render the note list again.
+        */
+        deleteNote(id).then(
+            () => {
+                const updatedNotes = useNotes()
+                const criminals = useCriminals()
+                render(updatedNotes, criminals)
+            }
+        )
+    }
 })
