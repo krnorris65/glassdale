@@ -38,7 +38,7 @@ eventHub.addEventListener("click", clickEvent => {
         // Make a new object representation of a note
         const newNote = {
             text: noteText.value,
-            criminal: Number(noteCriminalId.value),
+            criminalId: Number(noteCriminalId.value),
             timestamp: Date.now()
         }
 

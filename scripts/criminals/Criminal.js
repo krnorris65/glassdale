@@ -12,4 +12,3 @@ export const Criminal = (criminalObject) => {
     </div>
     `
 }
-
