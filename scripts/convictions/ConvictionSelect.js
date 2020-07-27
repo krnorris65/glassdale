@@ -19,13 +19,9 @@ eventHub.addEventListener("change", event => {
         const chosenCrimeId = event.target.value
         resetOtherDropdowns(event.target.id)
 
-        const crime = convictions.find(crime => crime.id === Number(chosenCrimeId))
-        
-        
         const crimeSelected = new CustomEvent("chosenCrime", {
             detail: {
-                crimeId: chosenCrimeId,
-                crime: crime
+                crimeId: chosenCrimeId
             }
         })
 
