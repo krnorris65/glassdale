@@ -30,12 +30,9 @@ eventHub.addEventListener("change", event => {
 
         const chosenOfficerId = event.target.value
 
-        const officerInfo = officers.find(officer => officer.id === Number(chosenOfficerId))
-
-
         const officerSelected = new CustomEvent("chosenOfficer", {
             detail: {
-                officer: officerInfo
+                officerId: chosenOfficerId
             }
         })
 
