@@ -1,0 +1,18 @@
+.facilityContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex: 3;
+}
+
+.facility {
+    border: 1px orangered solid;
+    flex-basis: 30%;
+    margin: 5px;
+    padding: 5px;
+}
+
+.facility__details p {
+    margin: 0;
+}
+

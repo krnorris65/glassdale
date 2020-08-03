@@ -1,5 +1,5 @@
 const eventHub = document.querySelector(".container")
-const contentTarget = document.querySelector(".note_button")
+const contentTarget = document.querySelector(".note__button")
 // import { resetAllDropdowns } from "../helpers/resetElement.js";
 
 // On the event hub, listen for a "change" event.
